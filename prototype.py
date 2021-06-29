@@ -19,6 +19,7 @@ class User:
         df = df.sort_values(by=['distance'])
         df = df.dropna(subset=['distance'])
         df.reset_index(drop=True)
+        
 
 def numeric_ht(ht:str):
     ft = ht[0]
