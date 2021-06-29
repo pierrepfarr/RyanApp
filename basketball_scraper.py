@@ -6,7 +6,7 @@ import string
 letters = list(string.ascii_lowercase)
 url_base = "https://www.basketball-reference.com/players/"
 
-output_folder = "/Users/pierre/Desktop/RyanApp/"
+players = pd.DataFrame()
 
 for letter in letters:
 
@@ -31,5 +31,8 @@ for letter in letters:
     name = pd.DataFrame(player_names, columns = [headers[0]])
     info = pd.DataFrame(player_info, columns = headers[1:])
 
-    players = pd.concat([name,info],axis=1)
-    players.to_csv(output_file)
+    new_players = pd.concat([name,info],axis=1)
+    players = players.append(new_players,ignore_index=True)
+
+players.reset_index()
+players.to_csv('basketball_players.csv') 
