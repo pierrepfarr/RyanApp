@@ -14,7 +14,7 @@ class User:
     def compute_distance(self,pnt1,pnt2):
         x= (pnt1[0]-pnt2[0])**2
         y= (pnt1[1]-pnt2[1])**2
-        return np.sqrt(x-y)
+        return np.sqrt(x+y)
 
     def find_matches(self,df):
         df['distance'] = df.apply(lambda x: self.compute_distance((x.z_Ht,x.z_Wt),(self.z_Ht,self.z_Wt)),axis=1)
@@ -67,7 +67,7 @@ with ranking:
     st.header("Most Comparable Ranking!")
     src_df = load_data("basketball_players.csv")
     df = user.find_matches(src_df.copy())
-    st.write(df.iloc[:,:8])
+    st.write(df.iloc[:,:])
 
 with vis_area:
     st.header("Visualized")
