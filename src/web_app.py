@@ -1,5 +1,7 @@
 import pandas as pd 
 import numpy as np
+import streamlit
+import plotly.graph_objects as go
 
 class User:
 
@@ -39,7 +41,11 @@ def load_data(fname):
     return df
 
 
+df = load_data("src/basketball_players.csv")
+fig = go.Figure(data=go.Scatter(x=df['z_Wt'],
+                                y=df['z_Ht'],
+                                mode= 'markers',
+                                text= df['Player']))
 
 
-if __name__ == "__main__":
-    pass
+fig.show()
